@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:outflow_v2/services/auth_service.dart';
 import 'package:outflow_v2/view/screen/home_screen.dart';
+import 'package:outflow_v2/view/screen/login_screen.dart';
+import 'package:outflow_v2/view/screen/signup_screen.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+
+  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -16,10 +22,26 @@ class App extends StatelessWidget {
             shadowColor: Color(0x00202020),
           )),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomeScreen(),
-      },
+      routerConfig: GoRouter(
+        initialLocation: '/login',
+        routes: [
+          GoRoute(
+            name: 'login',
+            path: '/login',
+            builder: (context, state) => const LoginScreen(),
+          ),
+          GoRoute(
+            name: 'signup',
+            path: '/signup',
+            builder: (context, state) => const SignupScreen(),
+          ),
+          GoRoute(
+            name: 'home',
+            path: '/',
+            builder: (context, state) => const HomeScreen(),
+          ),
+        ],
+      ),
     );
   }
 }
