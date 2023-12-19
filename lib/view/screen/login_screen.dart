@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:outflow_v2/view/widgets/custom_scafold.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -184,6 +185,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 32),
+                    GestureDetector(
+                      onTap: onTapNavigate,
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -200,5 +212,9 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       print("Form is not valid");
     }
+  }
+
+  void onTapNavigate() {
+    GoRouter.of(context).go('/signup');
   }
 }

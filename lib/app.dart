@@ -23,7 +23,7 @@ class App extends StatelessWidget {
           )),
       debugShowCheckedModeBanner: false,
       routerConfig: GoRouter(
-        initialLocation: '/login',
+        initialLocation: _authService.isLoggedIn() ? '/' : '/login',
         routes: [
           GoRoute(
             name: 'login',
