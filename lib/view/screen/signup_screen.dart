@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:outflow_v2/view/widgets/custom_scafold.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(
                         fontSize: 32,
                         color: Color(0xFFFFFFFF),
@@ -184,6 +185,17 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 32),
+                    GestureDetector(
+                      onTap: onTapNavigate,
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -200,5 +212,9 @@ class _SignupScreenState extends State<SignupScreen> {
     } else {
       print("Form is not valid");
     }
+  }
+
+  void onTapNavigate() {
+    GoRouter.of(context).go('/login');
   }
 }
