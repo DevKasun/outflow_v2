@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String labelText;
-  final String? initialValue;
-  final FormFieldValidator<String>? validator;
-  final TextEditingController? controller;
-  final bool obscureText;
+  final bool isPassword;
+  final String? Function(String?) onValidate;
+  final void Function(String?) onSaved;
 
   const CustomTextFormField({
     Key? key,
     required this.labelText,
-    this.initialValue,
-    this.validator,
-    this.controller,
-    this.obscureText = false,
+    required this.isPassword,
+    required this.onValidate,
+    required this.onSaved,
   }) : super(key: key);
 
   @override
@@ -59,16 +57,16 @@ class CustomTextFormField extends StatelessWidget {
           ),
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
+        contentPadding: const EdgeInsets.all(12),
         labelText: labelText,
         labelStyle: const TextStyle(
           color: Color(0xFF3D3D3D),
           fontSize: 16,
         ),
       ),
-      initialValue: initialValue,
-      validator: validator,
-      controller: controller,
-      obscureText: obscureText,
+      obscureText: isPassword,
+      validator: onValidate,
+      onSaved: onSaved,
     );
   }
 }
