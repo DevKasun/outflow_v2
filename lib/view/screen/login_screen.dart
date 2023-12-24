@@ -184,6 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  // TODO: Show the error messages correctly
   _login() async {
     setState(() {
       errorMessage = "";

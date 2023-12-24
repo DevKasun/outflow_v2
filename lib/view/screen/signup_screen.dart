@@ -184,6 +184,7 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
+  // TODO: Show the error messages correctly
   _signup() async {
     setState(() {
       errorMessage = "";
